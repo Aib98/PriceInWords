@@ -1,6 +1,6 @@
 public class PriceInWords {
     public static void main (String[] args){
-        int price = 4879;
+        int price = 1;
         String priceInWords = "";
 
         int thousand;

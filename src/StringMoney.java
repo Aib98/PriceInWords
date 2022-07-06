@@ -1,5 +1,6 @@
 
 public class StringMoney {
+
     public static String declinationMoney(int money, TypeValute typeValute) {
         String[] declinations = getDeclinations(typeValute);
 
@@ -28,7 +29,7 @@ public class StringMoney {
             return new String[] {"доллар", "доллара", "долларов"};
         }
         else {
-            throw new IllegalArgumentException("Incorrect type valute");
+            throw new IllegalArgumentException("Неверная валюта");
         }
     }
 

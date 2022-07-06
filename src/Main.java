@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Main {
+
     public static void main (String[] args){
         System.out.println("Введите число от 1 до 9999. Нажмите Enter и введите валюту руб или $.");
         System.out.println("Чтобы завершить программу напишите выход");

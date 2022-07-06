@@ -1,5 +1,6 @@
 public class Tests {
     public void testRub11() {
+
         System.out.println("Тест 11 рублей");
 
         int money = 11;
@@ -63,8 +64,7 @@ public class Tests {
             System.out.println("тест пройден");
         }
         else {
-            System.out.println("тест не пройден");
-            System.err.println();
+            System.out.println("тест не пройден " + result);
         }
 
 

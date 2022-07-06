@@ -1,23 +1,50 @@
-public class PriceInWords {
-    public static void main (String[] args){
-        int price = 1;
-        String priceInWords = "";
 
-        int thousand;
-        int hundred;
-        int ten;
-        int number;
+public class StringMoney {
+    public static String declinationMoney(int money, TypeValute typeValute) {
+        String[] declinations = getDeclinations(typeValute);
 
-        thousand = price/1000;
+        int p = money % 100;
+        int t = money % 10;
+
+        if (p >= 11 && p <= 15) {
+            return declinations[2];
+        }
+        else if (t == 1) {
+            return declinations[0];
+        }
+        else if (t == 2 || t == 3 || t == 4) {
+            return declinations[1];
+        }
+        else {
+            return declinations[2];
+        }
+    }
+
+    private static String[] getDeclinations(TypeValute typeValute) {
+        if (typeValute == TypeValute.Rub) {
+            return new String[] {"рубль", "рубля", "рублей"};
+        }
+        else if (typeValute == TypeValute.Dollar) {
+            return new String[] {"доллар", "доллара", "долларов"};
+        }
+        else {
+            throw new IllegalArgumentException("Incorrect type valute");
+        }
+    }
+
+    public static String moneyInWords(int price) {
+        int thousand = price/1000;
         price %= 1000;
 
-        hundred = price/100;
+        int hundred = price/100;
         price %= 100;
 
-        ten = price/10;
+        int ten = price/10;
         price %=10;
 
-        number = price;
+        int number = price;
+
+        String priceInWords = "";
 
         if (thousand == 1) priceInWords += " одна тысяча";
         if (thousand == 2) priceInWords += " две тысячи";
@@ -72,12 +99,24 @@ public class PriceInWords {
             if (number == 9) priceInWords += " девять";
         }
 
-        if ((number ==1) && (ten !=1)) priceInWords += " рубль";
-        if (((number == 2)||(number==3)||(number==4))&&(ten!=1))priceInWords += " рубля";
-        if (((number !=1)&&(number!=2)&&(number!=3)&&(number!=4)||(ten == 1)))priceInWords += " рублей";
-
-
-        System.out.println(priceInWords);
+        return priceInWords.trim();
     }
 
+    public static String moneyInWords(int price, String valute) {
+        TypeValute typeValute;
+
+
+        if (valute.equals("руб") || valute.equals("р")) {
+            typeValute = TypeValute.Rub;
+        } else if (valute.equals("$") || valute.equals("дол")) {
+            typeValute = TypeValute.Dollar;
+        } else {
+            System.out.println("Необходимо правильно указать валюту. Варианты: руб или р или $ или дол");
+            throw new IllegalArgumentException("Неверная валюта");
+        }
+
+        String result = moneyInWords(price);
+        String valuteResult = declinationMoney(price, typeValute);
+        return result + " " + valuteResult;
+    }
 }

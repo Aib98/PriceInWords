@@ -89,6 +89,7 @@ public class StringMoney {
         if (ten == 9) priceInWords += " девяносто";
 
         if (ten != 1) {
+            if (number == 0) priceInWords += " ноль";
             if (number == 1) priceInWords += " один";
             if (number == 2) priceInWords += " два";
             if (number == 3) priceInWords += " три";

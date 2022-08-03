@@ -1,38 +1,6 @@
 
 public class StringMoney {
 
-    public static String declinationMoney(int money, TypeValute typeValute) {
-        String[] declinations = getDeclinations(typeValute);
-
-        int p = money % 100;
-        int t = money % 10;
-
-        if (p >= 11 && p <= 15) {
-            return declinations[2];
-        }
-        else if (t == 1) {
-            return declinations[0];
-        }
-        else if (t == 2 || t == 3 || t == 4) {
-            return declinations[1];
-        }
-        else {
-            return declinations[2];
-        }
-    }
-
-    private static String[] getDeclinations(TypeValute typeValute) {
-        if (typeValute == TypeValute.Rub) {
-            return new String[] {"рубль", "рубля", "рублей"};
-        }
-        else if (typeValute == TypeValute.Dollar) {
-            return new String[] {"доллар", "доллара", "долларов"};
-        }
-        else {
-            throw new IllegalArgumentException("Неверная валюта");
-        }
-    }
-
     public static String moneyInWords(int price) {
         int thousand = price/1000;
         price %= 1000;
@@ -118,7 +86,7 @@ public class StringMoney {
         }
 
         String result = moneyInWords(price);
-        String valuteResult = declinationMoney(price, typeValute);
+        String valuteResult = typeValute.declinationMoney(price);
         return result + " " + valuteResult;
     }
 }

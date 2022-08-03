@@ -4,7 +4,7 @@ public class Tests {
         System.out.println("Тест 11 рублей");
 
         int money = 11;
-        String result = StringMoney.declinationMoney(money, TypeValute.Rub);
+        String result = TypeValute.Rub.declinationMoney(money);
 
         if (result.equals("рублей")) {
             System.out.println("Тест пройден");
@@ -18,7 +18,7 @@ public class Tests {
         System.out.println("Тест 0 рублей");
 
         int money = 0;
-        String result = StringMoney.declinationMoney(money, TypeValute.Rub);
+        String result = TypeValute.Rub.declinationMoney(money);
 
         if (result.equals("рублей")) {
             System.out.println("Тест пройден");

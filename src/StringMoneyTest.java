@@ -8,7 +8,7 @@ public class StringMoneyTest {
     public void declinationMoney() {
         int money = 11;
         String expected = "рублей";
-        String actual = StringMoney.declinationMoney(money, TypeValute.Rub);
+        String actual = TypeValute.Rub.declinationMoney(money);
         assertEquals(expected, actual);
     }
 
@@ -17,7 +17,7 @@ public class StringMoneyTest {
         int money = 0;
         String valute = "рублей";
         String expected = "нольрублей";
-        String actual =StringMoney.moneyInWords(money) + StringMoney.declinationMoney(money, TypeValute.Rub);
+        String actual =StringMoney.moneyInWords(money) + TypeValute.Rub.declinationMoney(money);
         assertEquals(expected, actual);
     }
 
@@ -33,7 +33,7 @@ public class StringMoneyTest {
     public void testMoneyWord() {
         int number = 239;
         String expected = "двести тридцать девятьдолларов";
-        String actusl = StringMoney.moneyInWords(number) + StringMoney.declinationMoney(number, TypeValute.Dollar);
+        String actusl = StringMoney.moneyInWords(number) + TypeValute.Dollar.declinationMoney(number);
         assertEquals(actusl, expected);
     }
 
